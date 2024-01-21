@@ -1,0 +1,26 @@
+.center{
+    text-align: center;
+    font-size: 6rem;
+    color: whitesmoke;
+    font-family: Courier New;
+}
+
+.strong-emphasis {
+    font-size: 40px;
+    font-family: sans-serif;
+    text-transform: uppercase;
+}
+
+h2 {
+    text-align: center;
+    font-family: Courier New;
+}
+
+h3 {
+    text-align: center;
+    font-family: Courier New;
+}
+
+li {
+    margin: 10px 0;
+}
