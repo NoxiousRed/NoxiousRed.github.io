@@ -43,3 +43,7 @@ li {
 .div-list {
     margin-left: 60px;
 }
+
+a:link {
+    color: white;
+}
