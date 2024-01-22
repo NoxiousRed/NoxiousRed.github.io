@@ -1,0 +1,63 @@
+
+/*
+    Craig Smith : pie.css
+    Pie.css holds all styling information for pie.html
+    h1 headers are differentiated from the rest of the headers
+    Tooltips used for tbsp and tsp definitions
+    user reviews given own class type to differentiate from normal paragraphs
+*/
+
+body {
+    background-image: url(silverware.jpg);
+}
+
+h1 {
+    text-align: center;
+    display: block;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #a4a400;
+    background-color: #F0F0F0;
+    font-family: 'lucida sans unicode', 'Helvetica', 'Arial', 'sans-serif';
+    text-decoration: underline;
+}
+
+body {
+    background-color: white;
+    color: #404040;
+    font-size: 11pt;
+    font-family: Georgia, Garamond, serif;
+}
+
+a:link {
+    color: #A4A400;
+}
+
+.tooltip {
+    text-decoration: underline;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    position: absolute;
+}
+
+.tooltip:hover .tooltiptext{
+    visibility:visible;
+}
+
+.user-review {
+    background-color: #FFFFA8;
+    font-style: italic;
+    display: block;
+    margin-left: 2em;
+    white-space: pre-line;
+}
+
