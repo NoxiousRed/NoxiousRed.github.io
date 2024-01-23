@@ -30,6 +30,10 @@ body {
     font-family: Georgia, Garamond, serif;
 }
 
+pre {
+    font-family: Georgia, Garamond, serif;
+}
+
 a:link {
     color: #A4A400;
 }
@@ -58,6 +62,4 @@ a:link {
     font-style: italic;
     display: block;
     margin-left: 2em;
-    white-space: pre-line;
 }
-
