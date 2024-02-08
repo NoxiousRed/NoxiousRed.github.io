@@ -34,3 +34,14 @@ section {
     text-align: center;
     padding: .1vh
 }
+
+.picture-holder {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2vh;
+}
+
+.picture-holder img {
+    width: 30vw;
+    border-radius: 2vh;
+}
