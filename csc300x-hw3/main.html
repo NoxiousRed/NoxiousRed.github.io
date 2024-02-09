@@ -11,6 +11,7 @@
     <title>Dine On Campus</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="UTF-8">
+    <script src="scripts.js" defer></script>
 </head>
 
 <div id="page-container">
@@ -48,20 +49,27 @@
                 <p>Sushi republic is located at 329 Tate St, Greensboro, NC 27403</p>
                 <p>Has outdoor seating, Serves vegan dishes and, best of all, offers take-out!</p>
                 <h3>Our Recommendations:</h3>
+                <p>(Click an image to see its details)</p>
 
                 <div class="picture-holder">
                     <img 
-                    id="food-pic" 
+                    class="food-pic" 
                     src="https://www.aviglatt.com/ncmedia/ncproducts/PS499.jpg" 
                     alt="Philadelphia-Roll">
                     <img
-                    id="food-pic"
+                    class="food-pic"
                     src="https://gracefoods.com/images/Recipes2018/iStock-495774966.jpg"
                     alt="Spicy-Tuna-Roll">
                     <img
-                    id="food-pic"
+                    class="food-pic"
                     src="https://www.tasteatlas.com/images/dishes/8082ea9f08b94119b0110ccd40a5e2ea.jpg"
                     alt="Rainbow-Roll">
+                </div>
+
+                <div class="enlarged-img-container" style="display: none">
+                    <img id="enlarged-img" src="" alt="Enlarged image">
+                    <h3 id="img-title"></h3>
+                    <p id="img-description"></p>
                 </div>
 
             </section>

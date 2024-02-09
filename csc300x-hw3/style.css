@@ -35,6 +35,21 @@ section {
     padding: .1vh
 }
 
+.enlarged-img-container {
+    display: flex;
+    align-items: center;
+    padding: 1vh;
+    border-radius: 4vh;
+    margin-top: 2vh;
+    background-color: #FFD275;
+}
+
+.enlarged-img-container img {
+    width: 40vw;
+    height: auto;
+    border-radius: 2vh;
+}
+
 .picture-holder {
     display: flex;
     justify-content: space-around;
@@ -43,5 +58,14 @@ section {
 
 .picture-holder img {
     width: 30vw;
+    height: auto;
     border-radius: 2vh;
+}
+
+.food-pic {
+    display: flex;
+}
+
+.hidden {
+    display: none;
 }
