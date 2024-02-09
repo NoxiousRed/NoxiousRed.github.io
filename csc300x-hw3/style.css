@@ -35,9 +35,22 @@ section {
     padding: .1vh
 }
 
+.picture-holder {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2vh;
+}
+
+.picture-holder img {
+    width: 30vw;
+    height: auto;
+    border-radius: 2vh;
+}
+
 .enlarged-img-container {
     display: flex;
     align-items: center;
+    justify-content: space-around;
     padding: 1vh;
     border-radius: 4vh;
     margin-top: 2vh;
@@ -50,16 +63,8 @@ section {
     border-radius: 2vh;
 }
 
-.picture-holder {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 2vh;
-}
-
-.picture-holder img {
-    width: 30vw;
-    height: auto;
-    border-radius: 2vh;
+.description-container {
+    margin: 6vh;
 }
 
 .food-pic {
