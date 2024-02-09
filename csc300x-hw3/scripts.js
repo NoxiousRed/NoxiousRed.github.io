@@ -13,17 +13,24 @@ function displayDescription(event) {
     if (previousClickedImage !== null){
         previousClickedImage.classList.remove('hidden');
     }
+    //Hides the image from the lineup of 3, replaced later if another image is selected
     const clickedImg = event.currentTarget;
     clickedImg.classList.add('hidden');
     previousClickedImage = clickedImg;
 
     const enlargedImg = document.getElementById('enlarged-img');
     const imgTitle = document.getElementById('img-title');
-    const dishDescription = document.getElementById('img-description');
+    const imgDescription = document.getElementById('img-description');
+    const imgDisclaimer = document.getElementById('img-disclaimer')
     const dishContainer = document.querySelector('.enlarged-img-container');
 
+    //getting the details of the clicked image
+    const details = imageDetails.find(item => item.src === clickedImg.src)
+    imgTitle.textContent = details.title;
+    imgDescription.textContent = details.description;
+    imgDisclaimer.textContent = details.disclaimer;
+    //Associating the enlarged image with the one that was clicked
     enlargedImg.src = clickedImg.src;
-
     dishContainer.style.display = 'flex';
 }
 
@@ -39,6 +46,7 @@ const imageDetails = [
     {
         src:'https://www.aviglatt.com/ncmedia/ncproducts/PS499.jpg',
         title: 'Philadelphia Roll',
-        description: 'A sushi classic, made exactly right! The philadelphia roll (or Philly roll) is wrapped up with avocado, smoked salmon, and cream cheese. If you like Lox bagels, you will love the philadelphia roll!'
+        description: 'A sushi classic, made exactly right! The philadelphia roll (or Philly roll) is wrapped up with avocado, smoked salmon, and cream cheese. If you like Lox bagels, you will love the philadelphia roll!',
+        disclaimer: 'Image courtesy of aviglatt.com'
     }
 ]
