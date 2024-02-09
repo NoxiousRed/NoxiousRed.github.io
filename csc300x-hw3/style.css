@@ -1,0 +1,78 @@
+* {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+h2 {
+    margin: 1vh;
+}
+
+body {
+    background-color: #FFD275;
+}
+
+header {
+    height: 8vh;
+    background-color: #E8AE68;
+    color: black;
+    font-size: 4vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5vh;
+}
+
+article {
+    background-color: #E8AE68;
+    margin-top: 2vh;
+    padding: 1vh;
+    border-radius: 4vh;
+}
+
+section {
+    background-color: #E8AE68;
+    margin-top: 2vh;
+    text-align: center;
+    padding: .1vh
+}
+
+.picture-holder {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2vh;
+}
+
+.picture-holder img {
+    width: 30vw;
+    height: auto;
+    border-radius: 2vh;
+}
+
+.enlarged-img-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1vh;
+    border-radius: 4vh;
+    margin-top: 2vh;
+    background-color: #FFD275;
+}
+
+.enlarged-img-container img {
+    width: 40vw;
+    height: auto;
+    border-radius: 2vh;
+}
+
+.description-container {
+    margin: 6vh;
+}
+
+.food-pic {
+    display: flex;
+}
+
+
+
+.hidden {
+    display: none;
+}
