@@ -2,6 +2,11 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+img {
+    max-width: 300px;
+    max-height: 300px;
+}
+
 h2 {
     margin: 1vh;
 }
