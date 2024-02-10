@@ -15,9 +15,56 @@
         <title>Dine On Campus</title>
         <link rel="stylesheet" type="text/css" href="style.css">
         <meta charset="UTF-8">
+        <script src="meal_plan.js" defer></script>
     </head>
 
-    <body>
-        
-    </body>
+    <div id="page-container">
+
+        <body>
+    
+            <header>
+                <p>Dine On Campus - Meal Planner</p>
+            </header>
+
+            <main>
+
+                <article>
+                    <h2>The Meal Planner:</h2>
+                    <p>Welcome to the Dine On Campus Meal Planner!</p>
+                    <p>Here you can craft your very own meal plan for your day based on our recommendations.
+                        Just select the dish you'd like to add on the left and the meal planner
+                        will calculate your expenses.
+                    </p>
+                    <p>If you'd like to remove anything from your meal plan, just select 
+                        "Remove" on your meal plan.
+                    </p>
+                </article>
+                
+                <div id="dual-container">
+
+                    <div id="recommended-section">
+                        <h3 class="restaurant-title">Sushi Republic:</h3>
+                        <ul id="meal-choices-sushi" class="meal-list"></ul>
+
+                        <h3 class="restaurant-title">Boba House:</h3>
+                        <ul id="meal-choices-boba" class="meal-list"></ul>
+
+                        <h3 id="astro" class="restaurant-title">Astro Dogs:</h3>
+                        <ul id="meal-choices-astro" class="meal-list"></ul>
+                    </div>
+
+                    <div id="mealplan-section">
+
+                        <div id="meal-plan"></div>
+
+                        <h3>Total: </h3>
+                        <div id="total-info"></div>
+                    </div>
+
+                </div>
+            </main>
+
+        </body>
+
+    </div>
 </html>
