@@ -131,5 +131,5 @@ const imageDetails = [
         description: 'A Korean traditional corn dish! Made from corn, bell peppers, butter and mozzarella cheese. Supremely delicious and sure to make your day much more tasty!',
         price: '$5.00',
         disclaimer: 'Image courtesy of astrocorndogs.com'
-    },
+    }
 ]

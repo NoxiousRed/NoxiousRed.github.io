@@ -11,6 +11,15 @@ h2 {
     margin: 1vh;
 }
 
+li {
+    padding-top: 1vh
+}
+
+button {
+    background-color: #FFD275;
+    border-radius: 1vh;
+}
+
 body {
     background-color: #FFD275;
 }
@@ -76,8 +85,48 @@ section {
     display: flex;
 }
 
-
-
 .hidden {
     display: none;
+}
+
+#dual-container {
+    height: 100%;
+    width: 90vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    margin: auto;
+    margin-top: 1vh;
+}
+
+#recommended-section {
+    flex: 2;
+    height: auto;
+    background-color: #E8AE68;
+    align-items: center;
+    justify-content: center;
+    margin-right:1vh;
+}
+
+#mealplan-section {
+    flex: 1.5;
+    height: auto;
+    background-color: #E8AE68;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+#meal-plan {
+    margin-top: 3vh;
+}
+
+.meal-plan-item {
+    margin-top: 1vh;
+}
+
+.restaurant-title {
+    margin-left: 1vh;
 }
