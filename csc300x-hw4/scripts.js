@@ -8,6 +8,9 @@ let playerChoice = 0;
 let playerWin = 0;
 let computerWin = 0;
 
+let computerCard = null;
+let playerCard = null;
+
 // get image array for computerThrow to cycle through
 let images=["images/rock.PNG", "images/scissors.PNG", "images/paper.PNG"]
 
@@ -75,6 +78,7 @@ function stopShuffle() {
     } else {
         computerCard = "paper";
     }
+    id("computer-action").textContent = computerCard
 }
 
 function determineWinner() {
@@ -90,6 +94,21 @@ function determineWinner() {
     }
     else if (playerCard === "rock" && computerCard === "scissors"){
         playerWin = 1;
+    }
+    else if (playerCard === "scissors" && computerCard === "paper"){
+        playerWin = 1;
+    }
+    else if (playerCard === "paper" && computerCard === "rock"){
+        playerWin = 1;
+    }
+    else if (playerCard === "rock" && computerCard === "paper"){
+        computerWin = 1;
+    }
+    else if (playerCard === "scissors" && computerCard === "rock"){
+        computerWin = 1;
+    }
+    else if (playerCard === "paper" && computerCard === "scissors"){
+        computerWin = 1;
     }
 }
 
