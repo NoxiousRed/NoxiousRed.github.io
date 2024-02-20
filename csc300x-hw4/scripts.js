@@ -1,10 +1,12 @@
+//instantiating reset button to reset on click
+const resetButton = document.getElementById('reset-btn').addEventListener('click', resetPage);
+
 //instantiating all cards for player and question mark card
 
 const playerChoices = document.querySelectorAll('.player-choice');
 const computerThrow = document.getElementById('question-mark');
 
-//player choice will be used to determine winner
-let playerChoice = 0;
+//win vars will be used to determine winner
 let playerWin = 0;
 let computerWin = 0;
 
@@ -12,7 +14,7 @@ let computerCard = null;
 let playerCard = null;
 
 // get image array for computerThrow to cycle through
-let images=["images/rock.PNG", "images/scissors.PNG", "images/paper.PNG"]
+const images=["images/rock.PNG", "images/scissors.PNG", "images/paper.PNG"]
 
 //timer for computer throw shuffling
 timerId = null;
@@ -23,18 +25,17 @@ for (let index = 0; index < playerChoices.length; index++) {
     element.addEventListener('click', eventsKickoff);
 }
 
-function eventsKickoff(event){
+async function eventsKickoff(event){
     //highlight the player's choice
-    highlightPlayerChoice(event);
+    await highlightPlayerChoice(event);
     //randomly roll the computer's choice
-    computerChoice(event);
+    await computerChoice(event);
     //determine winner
     determineWinner(event);
 }
 
-function highlightPlayerChoice(event) {
+async function highlightPlayerChoice(event) {
     const chosenCard = event.currentTarget;
-    console.log(chosenCard);
     chosenCard.style.border = "5px solid green";
     for (let index = 0; index < playerChoices.length; index++) {
         //remove all elements that arent the player's choice
@@ -45,14 +46,19 @@ function highlightPlayerChoice(event) {
     }
     //insert logic here to derive the id of the player chosen card
     playerCard = chosenCard.id;
-    console.log(playerCard);
+    return(playerCard);
 }
 
-function computerChoice() {
-    //start shuffling
-    computerThinking();
-    //stop shuffling
-    setTimeout(stopShuffle, 3000);
+async function computerChoice(event) {
+
+    //Set up a promise to wait for the return of the card the computer chooses
+    return new Promise ((resolve) => {
+        computerThinking();
+        setTimeout(() => {
+            stopShuffle();
+            resolve(computerCard);
+        }, 3000);
+    })
 }
 
 function computerThinking() {
@@ -78,40 +84,47 @@ function stopShuffle() {
     } else {
         computerCard = "paper";
     }
-    id("computer-action").textContent = computerCard
+    id("computer-action").textContent = computerCard.toUpperCase();
+    return computerCard;
 }
 
 function determineWinner() {
     //ASSOCIATE COMPUTER'S CHOICE BY ID OF PLAYER'S CHOICE (EITHER ROCK, PAPER, SCISSORS) THEN COMPARE THOSE STRINGS TO DETERMINE WINNER
-    if (playerCard === "rock" && computerCard === "rock"){
-        winner = null;
-    }
-    else if (playerCard === "scissors" && computerCard === "scissors"){
-        winner = null;
-    }
-    else if (playerCard === "paper" && computerCard === "paper"){
-        winner = null;
-    }
-    else if (playerCard === "rock" && computerCard === "scissors"){
-        playerWin = 1;
-    }
-    else if (playerCard === "scissors" && computerCard === "paper"){
-        playerWin = 1;
-    }
-    else if (playerCard === "paper" && computerCard === "rock"){
+    if (playerCard === "rock" && computerCard === "scissors"){
         playerWin = 1;
     }
     else if (playerCard === "rock" && computerCard === "paper"){
         computerWin = 1;
     }
+    else if (playerCard === "scissors" && computerCard === "paper"){
+        playerWin = 1;
+    }
     else if (playerCard === "scissors" && computerCard === "rock"){
         computerWin = 1;
+    }
+    else if (playerCard === "paper" && computerCard === "rock"){
+        playerWin = 1;
     }
     else if (playerCard === "paper" && computerCard === "scissors"){
         computerWin = 1;
     }
+
+    if (playerWin === 1) {
+        id("results").textContent = "YOU WIN!";
+    } else if (computerWin === 1){
+        id("results").textContent = "YOU LOSE...";
+    } else {
+        id("results").textContent = "IT'S A TIE!"
+    }
 }
 
+//function to reset the page on click "play again" button
+function resetPage(){
+    window.location.reload();
+    return Math.floor(Math.random() * max);
+}
+
+//helper function to randomize which image is displayed
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
