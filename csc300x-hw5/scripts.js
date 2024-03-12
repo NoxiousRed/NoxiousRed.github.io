@@ -35,9 +35,12 @@
                 for (const item of repoData) {
                     let repoCard = document.createElement('repo-card')
 
-                    let repoName = item['name'];
+                    let repoName = document.createElement('a');
                     //replace this with the necessary href link VVV
-                    repoName.innerHTML = 'Name: ' + name;
+                    const name = item['name'];
+                    const gitLink = item['html_url']
+                    repoName.innerHTML = name;
+                    repoName.setAttribute('href', gitLink)
                     div.appendChild(repoName);
 
                     let repoDate = document.createElement('p');
@@ -45,10 +48,10 @@
                     repoDate.innerHTML = 'Created: ' + date;
                     div.appendChild(repoDate);
 
-                    let upateDate = document.createElement('p');
+                    let updateDate = document.createElement('p');
                     const updated = item['updated_at'];
-                    upateDate.innerHTML = 'Updated: ' + updated;
-                    div.appendChild(upateDate);
+                    updateDate.innerHTML = 'Updated: ' + updated;
+                    div.appendChild(updateDate);
 
                     let rule = document.createElement('hr');
                     div.appendChild(rule);

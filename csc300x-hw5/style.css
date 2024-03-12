@@ -1,0 +1,16 @@
+#body-wrapper {
+
+}
+
+#card-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+#repo-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-flow:row;
+}
