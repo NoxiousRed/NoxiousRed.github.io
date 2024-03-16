@@ -27,12 +27,7 @@
         let div = id('card-container');
         div.innerHTML = '';
 
-        fetch(urlRepos, {
-            method: 'GET',
-            headers: {
-                'Authorization': 'token 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'
-            }
-        })
+        fetch(urlRepos)
             .then(response => response.json())
             .then(data => {
 
@@ -58,12 +53,7 @@
                     let commits = document.createElement('p');
                     //gets all commit info of the specified names LEAVE THIS COMMENTED OUT UNTIL ABSOLUTELY NECESSARY
                     let urlCommits = "https://api.github.com/repos/" + gitHubUsername + `/${name}/commits`
-                    fetch(urlCommits, {
-                        method: 'GET',
-                        headers: {
-                            'Authorization': 'token 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'
-                        }
-                    })
+                    fetch(urlCommits)
                         .then(response => response.json())
                         .then((data) => {
                             const numberOfCommits = data.length;
@@ -102,12 +92,7 @@
                     /* Getting repo languages */
                     let languages = document.createElement('p');
                     let urlLanguages = "https://api.github.com/repos/" + gitHubUsername + `/${name}/languages`
-                    fetch(urlLanguages, {
-                        method: 'GET',
-                        headers: {
-                            'Authorization': 'token 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'
-                        }
-                    })
+                    fetch(urlLanguages)
                         .then(response => response.json())
                         .then(data => {
                             const repoLanguages = Object.keys(data);
@@ -119,12 +104,7 @@
                     let watchers = document.createElement('p');
                     //gets all watcher info of the specified names
                     let urlWatchers = "https://api.github.com/repos/" + gitHubUsername + `/${name}/stargazers`
-                    fetch(urlWatchers, {
-                        method: 'GET',
-                        headers: {
-                            'Authorization': 'token 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'
-                        }
-                    })
+                    fetch(urlWatchers)
                         .then(response => response.json())
                         .then((data) => {
                             const numberOfWatchers = data.length;
