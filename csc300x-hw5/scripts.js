@@ -17,51 +17,124 @@
     function submitForm() {
         let gitHubUsername = document.getElementById('github-username').value;// pass in the entered github-username
         getUserRepos(gitHubUsername)
+        let url = GITHUB_API_BASEURL + gitHubUsername
     }
-
-
 
     function getUserRepos(gitHubUsername) {
         //want to replace gitHubUsername with the input user sends in
-        let url = GITHUB_API_BASEURL + gitHubUsername + '/repos?sort=created'
+        let urlRepos = GITHUB_API_BASEURL + gitHubUsername + '/repos?sort=created'
+        //clear the current GitHub repos being displayed
+        let div = id('card-container');
+        div.innerHTML = '';
 
-        //chaining thens allows you to access whatever data is returned in a then to following thens.
-        fetch(url)
-            .then(checkStatus)
-            .then((repoData) => {
-                console.log(repoData);
-                let div = id('card-container');
+        fetch(urlRepos, {
+            method: 'GET',
+            headers: {
+                'Authorization': 'token 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'
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
 
-                for (const item of repoData) {
-                    let repoCard = document.createElement('repo-card')
+                for (const item of data) {
+                    let repoCard = document.createElement('div')
+                    repoCard.classList.add('repo-card')
 
+                    /* Getting repo name and hyperlink to repo */
                     let repoName = document.createElement('a');
-                    //replace this with the necessary href link VVV
                     const name = item['name'];
                     const gitLink = item['html_url']
                     repoName.innerHTML = name;
                     repoName.setAttribute('href', gitLink)
-                    div.appendChild(repoName);
+                    repoCard.appendChild(repoName);
 
-                    let repoDate = document.createElement('p');
-                    const date = item['created_at'];
-                    repoDate.innerHTML = 'Created: ' + date;
-                    div.appendChild(repoDate);
+                    /* Getting repo description */
+                    let repoDescription = document.createElement('p');
+                    const description = item['description'];
+                    repoDescription.innerHTML = description;
+                    repoCard.appendChild(repoDescription);
 
+                    /* Get repo commits */
+                    let commits = document.createElement('p');
+                    //gets all commit info of the specified names LEAVE THIS COMMENTED OUT UNTIL ABSOLUTELY NECESSARY
+                    let urlCommits = "https://api.github.com/repos/" + gitHubUsername + `/${name}/commits`
+                    fetch(urlCommits, {
+                        method: 'GET',
+                        headers: {
+                            'Authorization': 'token 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'
+                        }
+                    })
+                        .then(response => response.json())
+                        .then((data) => {
+                            const numberOfCommits = data.length;
+                            commits.innerHTML = `Commits: ${numberOfCommits}`
+                        })
+                    repoCard.appendChild(commits);
+
+                    /* getting update date */
                     let updateDate = document.createElement('p');
                     const updated = item['updated_at'];
-                    updateDate.innerHTML = 'Updated: ' + updated;
-                    div.appendChild(updateDate);
+                    updatedDate = new Date(updated)
+                    const now = new Date();
+                    const oneDay = 24 * 60 * 60 * 1000;
 
-                    let rule = document.createElement('hr');
-                    div.appendChild(rule);
+                    const updatedDiffDays = Math.round(Math.abs((now - updatedDate) / oneDay))
+                    let updatedString;
+                    if (updatedDiffDays === 0) {
+                        updatedString = "Today";
+                    } else if (updatedDiffDays === 1) {
+                        updatedString = "Yesterday";
+                    } else {
+                        updatedString = `${updatedDiffDays} days ago`
+                    }
+                    updateDate.innerHTML = 'Updated: ' + updatedString;
+                    repoCard.appendChild(updateDate);
+
+                    /* getting created month and year */
+                    let repoDate = document.createElement('p');
+                    const date = item['created_at'];
+                    const createdDate = new Date(date);
+                    const createdMonth = createdDate.toLocaleString('default', { month: 'long' })
+                    const createdYear = createdDate.getFullYear()
+                    repoDate.innerHTML = `Created: ${createdMonth} ${createdYear}`;
+                    repoCard.appendChild(repoDate);
+
+                    /* Getting repo languages */
+                    let languages = document.createElement('p');
+                    let urlLanguages = "https://api.github.com/repos/" + gitHubUsername + `/${name}/languages`
+                    fetch(urlLanguages, {
+                        method: 'GET',
+                        headers: {
+                            'Authorization': 'token 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'
+                        }
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            const repoLanguages = Object.keys(data);
+                            languages.innerHTML = `Languages: ${repoLanguages}`
+                        })
+                    repoCard.appendChild(languages);
+
+                    /* Getting repo watchers */
+                    let watchers = document.createElement('p');
+                    //gets all watcher info of the specified names
+                    let urlWatchers = "https://api.github.com/repos/" + gitHubUsername + `/${name}/stargazers`
+                    fetch(urlWatchers, {
+                        method: 'GET',
+                        headers: {
+                            'Authorization': 'token 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'
+                        }
+                    })
+                        .then(response => response.json())
+                        .then((data) => {
+                            const numberOfWatchers = data.length;
+                            watchers.innerHTML = `Watchers: ${numberOfWatchers}`
+                        })
+                    repoCard.appendChild(watchers);
 
                     div.appendChild(repoCard);
                 }
             })
-            .catch((error) => {
-                console.error('Error: ', error);
-            });
     }
 
     //helper functions
